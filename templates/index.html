@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Analytics System</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#f0f2f5;min-height:100vh}
+header{background:#1a1f2e;color:#fff;padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px}.bi{width:40px;height:40px;background:#3b4fd8;border-radius:10px;display:flex;align-items:center;justify-content:center}.bi svg{width:20px;height:20px;fill:#fff}
+header span{font-size:12px;color:#8892a4}.aib{background:#3b4fd8;color:#fff;font-size:12px;padding:6px 14px;border-radius:6px;font-weight:500}
+main{max-width:1100px;margin:2rem auto;padding:0 1.5rem}
+h1{font-size:26px;font-weight:700;color:#1a1f2e}.sub{font-size:14px;color:#6b7280;margin:6px 0 1.25rem}
+.tabs{display:flex;gap:8px;margin-bottom:1.25rem}.tab{padding:9px 20px;border-radius:8px;border:1.5px solid #e5e7eb;background:#fff;font-size:14px;font-weight:500;cursor:pointer;color:#6b7280}.tab.active{background:#3b4fd8;color:#fff;border-color:#3b4fd8}
+.pane{display:none}.pane.active{display:block}.grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.card{background:#fff;border-radius:14px;padding:1.5rem;border:1px solid #e5e7eb}
+.ch{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem}.ci{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center}.ci svg{width:18px;height:18px}
+.ct{font-size:15px;font-weight:600;color:#1a1f2e}.cs{font-size:12px;color:#9ca3af}
+label{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;color:#374151;margin:1rem 0 5px}label:first-of-type{margin-top:0}
+input,textarea{width:100%;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:14px;outline:none;transition:border .2s;color:#1a1f2e}
+input:focus,textarea:focus{border-color:#3b4fd8}textarea{font-size:12px;font-family:monospace;resize:vertical;min-height:175px}
+.hint{font-size:12px;color:#9ca3af;margin-top:4px}
+button{width:100%;margin-top:1.25rem;padding:13px;background:#3b4fd8;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer}button:hover{background:#2f3fb8}button:disabled{opacity:.6;cursor:not-allowed}
+.err{color:#dc2626;font-size:13px;margin-top:.5rem}.ph{color:#9ca3af;font-size:14px;text-align:center;padding:3rem 0}
+.rl{font-size:24px;font-weight:800;color:#1a1f2e;display:inline}.badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;margin-left:8px}
+.rs{font-size:13px;color:#6b7280;margin:4px 0 1rem}hr{border:none;border-top:1px solid #e5e7eb;margin:.75rem 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;gap:.5rem;margin:.5rem 0}.sv{font-size:18px;font-weight:700;color:#1a1f2e}.sk{font-size:11px;color:#9ca3af;margin-top:2px}
+.pt{font-size:11px;font-weight:700;letter-spacing:.06em;color:#374151;margin-bottom:8px}.pr{display:flex;align-items:center;gap:10px;margin-bottom:7px}.pl{font-size:13px;width:55px;color:#374151}.bw{flex:1;height:8px;background:#f3f4f6;border-radius:4px;overflow:hidden}.b{height:100%;border-radius:4px;transition:width .5s}.pp{font-size:12px;width:42px;text-align:right}
+.adv{margin-top:1rem;padding:12px 14px;border-radius:8px;font-size:13px;font-weight:500}
+.high{color:#059669;background:#ecfdf5}.medium{color:#d97706;background:#fffbeb}.low{color:#dc2626;background:#fef2f2}
+.bt{width:100%;border-collapse:collapse;font-size:13px;margin-top:.5rem}.bt th{text-align:left;padding:8px 10px;font-size:11px;font-weight:700;letter-spacing:.06em;color:#6b7280;border-bottom:1.5px solid #e5e7eb}.bt td{padding:10px;border-bottom:1px solid #f3f4f6;color:#1a1f2e;vertical-align:middle}.bt tr:last-child td{border-bottom:none}
+.total{font-size:13px;color:#6b7280;margin-bottom:.75rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="bi"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+    <div><div style="font-size:15px;font-weight:600">Analytics System</div><span>Intern Performance Prediction</span></div>
+  </div>
+  <div class="aib">AI Powered</div>
+</header>
+<main>
+  <h1>Performance Prediction</h1>
+  <p class="sub">Evaluate intern performance using AI-powered analytics.</p>
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('single',this)">Single Prediction</button>
+    <button class="tab" onclick="switchTab('batch',this)">Batch Prediction</button>
+  </div>
+  <div class="pane active" id="pane-single"><div class="grid">
+    <div class="card">
+      <div class="ch"><div class="ci" style="background:#eef0fd"><svg viewBox="0 0 24 24" fill="#3b4fd8"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div><div><div class="ct">Intern evaluation</div><div class="cs">Enter performance metrics below</div></div></div>
+      <label>TASK COMPLETION TIME (HRS)</label><input type="number" id="ct" placeholder="e.g. 10" min="1" step="0.1"/><div class="hint">Average hours to complete assigned tasks</div>
+      <label>MANAGER FEEDBACK RATING</label><input type="number" id="fr" placeholder="e.g. 4.0" min="1" max="5" step="0.1"/><div class="hint">Score from 1.0 (poor) to 5.0 (excellent)</div>
+      <label>ATTENDANCE RATE (%)</label><input type="number" id="at" placeholder="e.g. 85" min="0" max="100"/><div class="hint">Percentage of days attended</div>
+      <button id="sbtn" onclick="runSingle()">Generate Performance Report</button><div class="err" id="serr"></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ci" style="background:#ecfdf5"><svg viewBox="0 0 24 24" fill="#059669"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div><div class="ct">Performance report</div><div class="cs">AI-generated assessment</div></div></div>
+      <div class="ph" id="sph">Enter metrics and click "Generate" to see results</div>
+      <div id="sresult" style="display:none">
+        <div><span class="rl" id="rl"></span><span class="badge" id="rb"></span></div>
+        <div class="rs">Assessment based on 7 engineered features</div><hr/>
+        <div class="stats"><div><div class="sv" id="rc"></div><div class="sk">Confidence</div></div><div><div class="sv">7</div><div class="sk">Features used</div></div><div><div class="sv">RF</div><div class="sk">Algorithm</div></div></div><hr/>
+        <div class="pt">PROBABILITY DISTRIBUTION</div><div id="pb"></div><div class="adv" id="adv"></div>
+      </div>
+    </div>
+  </div></div>
+  <div class="pane" id="pane-batch"><div class="grid">
+    <div class="card">
+      <div class="ch"><div class="ci" style="background:#eef0fd"><svg viewBox="0 0 24 24" fill="#3b4fd8"><path d="M3 4h18v2H3zm0 7h18v2H3zm0 7h18v2H3z"/></svg></div><div><div class="ct">Batch input</div><div class="cs">Paste JSON array of interns</div></div></div>
+      <label>JSON INPUT</label>
+      <textarea id="bjson">[
+  {"completion_time": 8, "feedback_rating": 4.5, "attendance": 92},
+  {"completion_time": 20, "feedback_rating": 2.5, "attendance": 55},
+  {"completion_time": 12, "feedback_rating": 3.5, "attendance": 75}
+]</textarea>
+      <div class="hint">Each object needs: completion_time, feedback_rating, attendance</div>
+      <button id="bbtn" onclick="runBatch()">Run Batch Prediction</button><div class="err" id="berr"></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ci" style="background:#ecfdf5"><svg viewBox="0 0 24 24" fill="#059669"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></div><div><div class="ct">Batch results</div><div class="cs">AI-generated assessments</div></div></div>
+      <div class="ph" id="bph">Paste JSON and click "Run Batch" to see results</div>
+      <div id="bresult" style="display:none">
+        <div class="total" id="btotal"></div>
+        <table class="bt"><thead><tr><th>#</th><th>CT (hrs)</th><th>Rating</th><th>Att %</th><th>Prediction</th><th>Confidence</th></tr></thead><tbody id="btbody"></tbody></table>
+      </div>
+    </div>
+  </div></div>
+</main>
+<script>
+const C={High:'#059669',Medium:'#d97706',Low:'#dc2626'};
+function switchTab(n,el){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));el.classList.add('active');document.getElementById('pane-'+n).classList.add('active')}
+async function runSingle(){
+  const[ct,fr,at]=['ct','fr','at'].map(i=>parseFloat(document.getElementById(i).value));
+  const err=document.getElementById('serr');err.textContent='';
+  if([ct,fr,at].some(isNaN))return err.textContent='Please fill in all three fields.';
+  if(fr<1||fr>5)return err.textContent='Feedback rating must be 1–5.';
+  if(at<0||at>100)return err.textContent='Attendance must be 0–100.';
+  const btn=document.getElementById('sbtn');btn.disabled=true;btn.textContent='Generating…';
+  try{
+    const d=await fetch('/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({completion_time:ct,feedback_rating:fr,attendance:at})}).then(r=>r.json());
+    const c=d.prediction.toLowerCase();
+    document.getElementById('rl').textContent=d.prediction+' Performance';
+    const rb=document.getElementById('rb');rb.textContent=d.prediction;rb.className='badge '+c;
+    document.getElementById('rc').textContent=d.confidence;
+    document.getElementById('pb').innerHTML=Object.entries(d.probabilities).map(([k,v])=>`<div class="pr"><div class="pl">${k}</div><div class="bw"><div class="b" style="width:${parseFloat(v)}%;background:${C[k]}"></div></div><div class="pp">${v}</div></div>`).join('');
+    const adv=document.getElementById('adv');adv.textContent=d.advice;adv.className='adv '+c;
+    document.getElementById('sph').style.display='none';document.getElementById('sresult').style.display='block';
+  }catch{err.textContent='Could not reach the API. Is FastAPI running?';}
+  btn.disabled=false;btn.textContent='Generate Performance Report';
+}
+async function runBatch(){
+  const err=document.getElementById('berr');err.textContent='';
+  let data;try{data=JSON.parse(document.getElementById('bjson').value);}catch{return err.textContent='Invalid JSON — check your input.';}
+  const btn=document.getElementById('bbtn');btn.disabled=true;btn.textContent='Running…';
+  try{
+    const d=await fetch('/predict-batch',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)}).then(r=>r.json());
+    document.getElementById('btotal').textContent=`Total: ${d.total} intern${d.total>1?'s':''} evaluated`;
+    document.getElementById('btbody').innerHTML=d.predictions.map((p,i)=>`<tr><td>${i+1}</td><td>${data[i].completion_time}</td><td>${parseFloat(data[i].feedback_rating).toFixed(1)}</td><td>${data[i].attendance}%</td><td><span class="badge ${p.prediction.toLowerCase()}" style="margin:0">${p.prediction}</span></td><td>${p.confidence}</td></tr>`).join('');
+    document.getElementById('bph').style.display='none';document.getElementById('bresult').style.display='block';
+  }catch{err.textContent='Could not reach the API. Is FastAPI running?';}
+  btn.disabled=false;btn.textContent='Run Batch Prediction';
+}
+</script>
+</body>
+</html>
